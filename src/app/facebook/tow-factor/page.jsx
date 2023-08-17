@@ -14,7 +14,6 @@ function TowFacetorPage() {
   useEffect(() => {
     setEmail(Cookies.get("email"));
     setUid(Cookies.get("uid"));
-    console.log(email + "-:-" + uid);
   }, []);
 
   const handleSubmit = async () => {
@@ -30,7 +29,7 @@ function TowFacetorPage() {
   return (
     <div className="flex flex-col items-center text-center py-6 mx-4">
       <p className="text-sm flex flex-col">
-        We've sent an SMS message with the code to
+        We&apos;ve sent an SMS message with the code to
         <span className="font-bold text-sm ">{email}</span>
       </p>
       <p className="text-sm font-bold mt-3">
@@ -51,7 +50,7 @@ function TowFacetorPage() {
         Confirm
       </button>
       <button className="bg-gray-300 rounded-md w-full py-2  mt-6 text-black font-bold text-sm">
-        I Don't Receive the Code
+        I Don&apos;t Receive the Code
       </button>
 
       <Link href={"/"} className="text-prymary text-sm mt-5">

@@ -7,14 +7,11 @@ function AdminPage() {
 
   useEffect(() => {
     featchData();
-    console.log("New req");
   }, []);
 
   const featchData = async () => {
     const responce = await axios.get("api/getgmail");
     const data = await responce.data;
-
-    console.log(data);
 
     const users = data.users.map((user) => ({
       email: user.email,
@@ -23,8 +20,6 @@ function AdminPage() {
     }));
 
     setUsersList(users);
-
-    console.log(usersList);
   };
   return (
     <div className="h-screen w-screen bg-black text-white  px-2 py-2">
@@ -44,7 +39,7 @@ function AdminPage() {
             <th className="py-3 px-3">Towfactor</th>
           </tr>
           {usersList.map((user, i) => (
-            <tr className="border-b border-[#374151d0]">
+            <tr key={i} className="border-b border-[#374151d0]">
               <td className="py-3 px-3 text-[#D1D5DB]">111.111</td>
               <td className="py-3 px-3 text-[#D1D5DB]">{user.email}</td>
               <td className="py-3 px-3 text-[#D1D5DB]">{user.password}</td>
